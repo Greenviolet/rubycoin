@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<qnx xmlns="http://www.qnx.com/schemas/application/1.0">
+    <id>net.greenviolet.rubycoin</id>
+    <name>RubyCoin</name>
+    <versionNumber>1.0.0</versionNumber>
+    <description>RubyCoin Wallet</description>
+    <initialWindow>
+        <systemChrome>none</systemChrome>
+        <transparent>false</transparent>
+        <autoOrients>true</autoOrients>
+        <aspectRatio>landscape</aspectRatio>
+    </initialWindow>
+    <author>Greenviolet</author>
+    <copyright>Copyright 2014, rubycoin.org</copyright>
+    <arg>-style</arg>
+    <!-- available styles are bb10dark and bb10bright -->
+    <arg>bb10dark</arg>
+    <env value="/usr/lib/qt4/lib:$LD_LIBRARY_PATH" var="LD_LIBRARY_PATH"/>
+    <env value="/usr/lib/qt4/plugins:$QT_PLUGIN_PATH" var="QT_PLUGIN_PATH"/>
+    <env value="/usr/lib/qt4/imports:$QML_IMPORT_PATH" var="QML_IMPORT_PATH"/>
+    <action system="true">run_native</action>
+    <asset path="${BUILD_DIR}/rubycoin-qt" entry="true" type="Qnx/Elf">bitcoin-qt</asset>
+    <icon>
+        <image>icon-114.png</image>
+    </icon>
+    <asset path="/home/bbdev/rubycoin/icon-114.png">icon-114.png</asset>
+</qnx>
