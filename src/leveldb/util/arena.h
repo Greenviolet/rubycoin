@@ -5,7 +5,11 @@
 #ifndef STORAGE_LEVELDB_UTIL_ARENA_H_
 #define STORAGE_LEVELDB_UTIL_ARENA_H_
 
+#ifdef __QNXNTO__
+#include <stddef.h>
+#else
 #include <cstddef>
+#endif
 #include <vector>
 #include <assert.h>
 #include <stdint.h>
