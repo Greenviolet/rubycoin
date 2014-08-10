@@ -5,6 +5,9 @@
 #include "port/port_posix.h"
 
 #include <cstdlib>
+#ifdef __QNXNTO__
+#include <stdlib.h>
+#endif
 #include <stdio.h>
 #include <string.h>
 #include "util/logging.h"

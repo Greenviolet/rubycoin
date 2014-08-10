@@ -133,7 +133,7 @@ case "$TARGET_OS" in
         PLATFORM=OS_QNX
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_QNX -DLEVELDB_PLATFORM_POSIX -fstack-protector -fstack-protector-all"
         PLATFORM_LDFLAGS=""  # All pthread features are in the QNX C library
-	PLATFORM_SHARED_CFLAGS="" # no need for -fPIC: "-fPIC ignored for target (all code is position independent)"
+        PLATFORM_SHARED_CFLAGS="" # no need for -fPIC: "-fPIC ignored for target (all code is position independent)"
         PORT_FILE=port/port_posix.cc
         CROSS_COMPILE=true
 	if [ "$CC" = "cc" ]; then
@@ -143,7 +143,7 @@ case "$TARGET_OS" in
 	    CXX=QCC
 	fi
 	if [ "$CC" = "qcc" ]; then
-		COMMON_FLAGS="$COMMON_FLAGS" # qcc-specific flags, incompatible with gcc.
+		COMMON_FLAGS="$COMMON_FLAGS" # qcc-specific flags, unneeded/incompatible with gcc.
 		COMMON_FLAGS="$COMMON_FLAGS -Vgcc_ntoarmv7le -mcpu=cortex-a9 -Wno-psabi" # Building for device-* by default. Change this for simulator.
 	fi
         ;;
