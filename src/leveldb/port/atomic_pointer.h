@@ -93,6 +93,19 @@ inline void MemoryBarrier() {
 }
 #define LEVELDB_HAVE_MEMORY_BARRIER
 
+// QNX
+#elif defined(__QNXNTO__)
+#ifdef __ARMEL__
+inline void MemoryBarrier() {
+  // TODO: Figure out a better way of doing this.
+  asm volatile("dmb" : : : "memory");
+}
+#define LEVELDB_HAVE_MEMORY_BARRIER
+#else // Not-ARM. Probably x86. Please add a specific elif for anything new.
+#error Please implement AtomicPointer for this QNX platform.
+#endif
+
+
 // PPC
 #elif defined(ARCH_CPU_PPC_FAMILY) && defined(__GNUC__)
 inline void MemoryBarrier() {

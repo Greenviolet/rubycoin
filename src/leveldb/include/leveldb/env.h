@@ -13,7 +13,11 @@
 #ifndef STORAGE_LEVELDB_INCLUDE_ENV_H_
 #define STORAGE_LEVELDB_INCLUDE_ENV_H_
 
+#ifdef __QNXNTO__ 
+#include <stdarg.h> 
+#else 
 #include <cstdarg>
+#endif
 #include <string>
 #include <vector>
 #include <stdint.h>

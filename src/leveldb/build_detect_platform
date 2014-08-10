@@ -136,6 +136,16 @@ case "$TARGET_OS" in
 	PLATFORM_SHARED_CFLAGS="" # no need for -fPIC: "-fPIC ignored for target (all code is position independent)"
         PORT_FILE=port/port_posix.cc
         CROSS_COMPILE=true
+	if [ "$CC" = "cc" ]; then
+	    CC=qcc
+	fi
+	if [ "$CXX" = "g++" ]; then
+	    CXX=QCC
+	fi
+	if [ "$CC" = "qcc" ]; then
+		COMMON_FLAGS="$COMMON_FLAGS" # qcc-specific flags, incompatible with gcc.
+		COMMON_FLAGS="$COMMON_FLAGS -Vgcc_ntoarmv7le -mcpu=cortex-a9 -Wno-psabi" # Building for device-* by default. Change this for simulator.
+	fi
         ;;
     HP-UX)
         PLATFORM=OS_HPUX
