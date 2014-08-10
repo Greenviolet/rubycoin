@@ -37,6 +37,13 @@
   // See http://code.google.com/p/android/issues/detail?id=39824
   #include <endian.h>
   #define PLATFORM_IS_LITTLE_ENDIAN  (_BYTE_ORDER == _LITTLE_ENDIAN)
+#elif defined(OS_QNX)
+  #include <sys/param.h>
+  #if defined(__BIGENDIAN__)
+    #define PLATFORM_IS_LITTLE_ENDIAN false
+  #else
+    #define PLATFORM_IS_LITTLE_ENDIAN true
+  #endif
 #else
   #include <endian.h>
 #endif

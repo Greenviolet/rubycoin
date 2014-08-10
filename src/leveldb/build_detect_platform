@@ -129,6 +129,14 @@ case "$TARGET_OS" in
         PORT_FILE=port/port_posix.cc
         CROSS_COMPILE=true
         ;;
+    QNX)
+        PLATFORM=OS_QNX
+        COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_QNX -DLEVELDB_PLATFORM_POSIX -fstack-protector -fstack-protector-all"
+        PLATFORM_LDFLAGS=""  # All pthread features are in the QNX C library
+	PLATFORM_SHARED_CFLAGS="" # no need for -fPIC: "-fPIC ignored for target (all code is position independent)"
+        PORT_FILE=port/port_posix.cc
+        CROSS_COMPILE=true
+        ;;
     HP-UX)
         PLATFORM=OS_HPUX
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_HPUX"
